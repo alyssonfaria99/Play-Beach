@@ -4,27 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Beach - Quadra de Futevôlei</title>
+    <title>Play Beach - Quadra de Areia</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <div class="container">
-            <h1>Play Beach</h1>
+        <div class="logo-section">
+            <img src="logo.jpg" alt="Logo Play Beach" class="logo-header-img">
         </div>
+        <nav>
+            <ul>
+                <li><a href="#info">Horários e Preços</a></li>
+                <li><a href="#contact">Campeonatos e Eventos</a></li>
+                <li><a href="#address">Endereço</a></li>
+                <li><a href="#address">Contato</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <section id="intro" class = 'video-background'>
+        <section id="intro" class="image-background">
             <div class="container">
-                <h2>Bem-vindo ao Play Beach</h2>
-                <p>A melhor quadra de futevôlei para você se divertir com amigos e família.</p>
+                <h1>BEM VINDO AO</h1>
+                <h2>PLAY BEACH</h2>
+                <h3>Onde a paixão pelo jogo se encontra com a areia!</h3>
             </div>
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="Whatsapp Video 2024-07-25 At 10.19.33.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+        </section>
+        <section id="gallery">
+            <div class="container">
+                <h2>Galeria de Fotos</h2>
+                <div class="carousel">
+                    <div class="carousel-item"><img src="quadraftv.jpeg" alt="Quadra de futevôlei 1"></div>
+                    <div class="carousel-item"><img src="saque.jpg" alt="Quadra de futevôlei 2"></div>
+                    <div class="carousel-item"><img src="logo.jpg" alt="Quadra de futevôlei 3"></div>
+                    <div class="carousel-item"><img src="foto4.jpg" alt="Quadra de futevôlei 4"></div>
+                </div>
+                <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
             </div>
         </section>
         <section id="info">
@@ -35,39 +52,42 @@
                 <p>Preços: R$ 80,00 por hora</p>
             </div>
         </section>
-        <section id="gallery">
-            <div class="container">
-                <h2>Galeria de Fotos</h2>
-                <div class="gallery-grid">
-                    <img src="foto1.jpg" alt="Quadra de futevôlei 1">
-                    <img src="foto2.jpg" alt="Quadra de futevôlei 2">
-                    <img src="foto3.jpg" alt="Quadra de futevôlei 3">
-                    <img src="foto4.jpg" alt="Quadra de futevôlei 4">
-                </div>
-            </div>
-        </section>
         <section id="contact">
             <div class="container">
                 <h2>Campeonatos e Eventos</h2>
-                <p> Oganize seu campeonato com a gente!</p>
+                <p>Oganize seu campeonato com a gente!</p>
+            </div>
+        </section>
+        <section id="address">
+            <div class="container">
+                <h2>Nosso Endereço</h2>
                 <div class="map-container">
-                    <h3>Nosso Endereço</h3>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3758.9234063153985!2d-45.2431385!3d-19.7446503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b341d13b4eeb41%3A0x844f79443855b66f!2sPlay%20Beach%20%EF%B8%8F!5e0!3m2!1spt-BR!2sbr!4v1689682722558!5m2!1spt-BR!2sbr"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    <a href="https://www.google.com/maps/place/Play+Beach+%EF%B8%8F/@-19.7446503,-45.2431385,17z/data=!4m9!1m2!2m1!1sAvenida+dos+Pequis+527+Jardim+dos+Anjos+2,+Bom+Despacho+-+MG,+35600-000!3m5!1s0x94b341d13b4eeb41:0x844f79443855b66f!8m2!3d-19.7446856!4d-45.2432511!16s%2Fg%2F11sgr0csqn?entry=ttu"
-                        target="_blank" class="google-maps-button">Ver no Google Maps</a>
+                    <a href="https://www.google.com/maps/place/Play+Beach+%EF%B8%8F/@-19.7446503,-45.2431385,17z/data=!4m6!3m5!1s0x94b341d13b4eeb41:0x844f79443855b66f!8m2!3d-19.7446856!4d-45.2432511!16s%2Fg%2F11sgr0csqn?entry=ttu"
+                        class="google-maps-button" target="_blank">Abrir no Google Maps</a>
                 </div>
             </div>
         </section>
     </main>
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Play Beach. Todos os direitos reservados.</p>
-            <p><a href="https://www.instagram.com/playbeach_/" target="_blank">Instagram</a>
-            </p>
-        </div>
+        <p>&copy; 2023 Play Beach. Todos os direitos reservados.</p>
     </footer>
+    <script>
+        let currentSlide = 0;
+
+        function moveCarousel(step) {
+            const items = document.querySelectorAll('.carousel-item');
+            items[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + step + items.length) % items.length;
+            items[currentSlide].classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.carousel-item')[0].classList.add('active');
+        });
+    </script>
 </body>
 
 </html>
